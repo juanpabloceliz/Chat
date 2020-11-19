@@ -1,11 +1,14 @@
 const express = require('express')
-const router = express.Router()
+const bodyParser = require('body-parser')
+
+const router = require('./network/routes')
 
 var app = express()
 
-app.use(router)
+app.use(bodyParser.json())
+//app.use(router)
 
-
+router(app)
 
 // app.use('/', function (req, res) {
 //     res.send('Hola')
