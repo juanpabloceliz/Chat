@@ -1,7 +1,7 @@
 const db = require('mongoose')
 
 db.Promise = global.Promise
-db.connect('mongodb+srv://juanpabloceliz:juanpabloceliz@cluster0.ojduk.mongodb.net/test', {
+db.connect('mongodb+srv://juanpabloceliz:juanpabloceliz@cluster0.ojduk.mongodb.net/chat?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
             response.success(req, res, fullMessage, 201)
         })
         .catch(e => {
-            response.error(req, res, 'Invalid information', 400, 'Login error')
+            response.error(req, res, 'Invalid information', 400, 'Login error.')
         })
 })
 
