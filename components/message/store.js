@@ -1,29 +1,38 @@
-const db = require('mongoose')
-
-db.Promise = global.Promise
-db.connect('mongodb+srv://juanpabloceliz:juanpabloceliz@cluster0.ojduk.mongodb.net/chat?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-
-console.log('[db] Connect successfull.')
+const Model = require('./model')
 
 function addMessage(message) {
-    // list.push(message)
     const myMessage = new Model(message)
     myMessage.save()
 }
 
-async function getMessages() {
-    // return list
-    const messages = await Model.find()
+async function getMessages(filterUser) {
+    let filter = {}
+    if (filterUser !== null) {
+        filter = {user: filterUser}
+    }
+    const messages = await Model.find(filter)
     return messages
+}
+
+async function updateText(id, message) {
+    const foundMessage = await Model.findOne({
+        _id: id
+    })
+
+    foundMessage.message = message
+    const newMessage = await foundMessage.save()
+    return newMessage
+}
+
+function removeMessage(id) {
+    return Model.deleteOne({
+        _id: id
+    })
 }
 
 module.exports = {
     add: addMessage,
-    list: getMessages
-    //get
-    //update
-    //delete
+    list: getMessages,
+    updateText: updateText,
+    remove: removeMessage
 }

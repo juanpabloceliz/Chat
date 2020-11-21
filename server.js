@@ -1,7 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
+const db = require('./db')
+
 const router = require('./network/routes')
+
+db('mongodb+srv://juanpabloceliz:juanpabloceliz@cluster0.ojduk.mongodb.net/chat?retryWrites=true&w=majority')
 
 var app = express()
 

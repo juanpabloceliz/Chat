@@ -6,7 +6,7 @@ const mySchema = new Schema({
     user: String,
     message: {
         type: String,
-        require: true
+        required: true
     },
     date: Date
 })
