@@ -1,4 +1,3 @@
-const e = require('express')
 const express = require('express')
 
 const response = require('../../network/response')
